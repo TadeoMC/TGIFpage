@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>TGIF: senate-data</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body id="senate">
+  <div class="container" id="app2">
+
+    <div id="app">
+      <encabezado></encabezado>
+      <barra-nav></barra-nav>
+    </div>
+
+
+    <div calss="row">
+      <div class="text-justify col">
+        <h2>Senators</h2>
+        <p class="w-80">First convened in 1789, the composition and powers of the Senate are established in Article One
+          of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve
+          staggered six-year terms. The Senate has several exclusive powers not granted to the House, including
+          consenting to treaties as a precondition to their ratification and consenting to or confirming appointments
+          of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory
+          officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached
+          by the House.</p>
+      </div>
+    </div>
+
+
+
+    <div>
+      <div class="row justify-content-between">
+        <div class="col-xs-6 checkboxes">
+          <form class="form-inline">
+            <h3 class="margin0">Party Affiliation: </h3>
+            <label class="checkbox-inline margin0">
+              <input id="democrat" type="checkbox" value="D" name="partyAffiliation" v-model="partyCheck">Democrat
+            </label>
+            <label class="checkbox-inline margin0">
+              <input id="republican" type="checkbox" value="R" name="partyAffiliation" v-model="partyCheck">Republican
+            </label>
+            <label class="checkbox-inline margin0">
+              <input id="independent" type="checkbox" value="I" name="partyAffiliation" v-model="partyCheck">Independent
+            </label>
+          </form>
+        </div>
+
+        <div class="select col-xs-6 margin0">
+          <form class="form-inline" action="/action_page.php">
+            <div class="form-group margin0">
+              <label for="stateSelect" class="margin0" v-model="stateSelect"> STATE: </label>
+              <select class="form-control" id="stateSelect">
+                <option value="all">--All--</option>
+                <option v-for="state in states">{{state}}</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table" >
+          <thead class="thead-light">
+            <tr>
+              <th>Members</th>
+              <th>Party</th>
+              <th>State</th>
+              <th>Seniority</th>
+              <th>Vote with Party</th>
+            </tr>
+          </thead>
+          <tbody id="table-data" class="toHide">
+            <tr v-for="member in members">
+              <td><a :href="member.url">{{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
+              <td>{{member.party}}</td>
+              <td>{{member.state}}</td>
+              <td>{{member.seniority}} years</td>
+              <td>{{member.votes_with_party_pct}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="ajax-loader d-flex justify-content-center">
+          <img src="css/Preloader_2.gif" class="img-responsive" />
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center">
+      <h1>&#169; 2016 TGIF | All Rights Reserved</h1>
+    </footer>
+
+    <!--<script type="text/javascript" src="pro-congress-113-senate.js"></script>-->
+    <!--Vue-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <!--MyVue-->
+    <script src=JavaScript/index.js> </script> <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- Data Tables codes -->
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+    <!-- My JS codes -->
+    <script src="JavaScript/JavaScript.js"></script>
+
+  </div>
+</body>
+
+</html>
